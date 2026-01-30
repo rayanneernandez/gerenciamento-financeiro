@@ -5,7 +5,7 @@ interface SummaryCardProps {
   title: string;
   value: number;
   icon: LucideIcon;
-  variant: 'income' | 'expense' | 'balance';
+  variant: 'income' | 'expense' | 'balance' | 'savings';
   delay?: number;
 }
 
@@ -24,7 +24,8 @@ export function SummaryCard({ title, value, icon: Icon, variant, delay = 0 }: Su
         "glass-card shadow-card",
         variant === 'income' && "hover:shadow-glow-income",
         variant === 'expense' && "hover:shadow-glow-expense",
-        variant === 'balance' && "hover:shadow-glow-primary"
+        variant === 'balance' && "hover:shadow-glow-primary",
+        variant === 'savings' && "hover:shadow-glow-savings" // Assumed custom class or fallback
       )}
       style={{ animationDelay: `${delay}ms` }}
     >
@@ -33,7 +34,8 @@ export function SummaryCard({ title, value, icon: Icon, variant, delay = 0 }: Su
         "absolute top-0 left-0 right-0 h-1 rounded-t-2xl",
         variant === 'income' && "gradient-income",
         variant === 'expense' && "gradient-expense",
-        variant === 'balance' && "gradient-balance"
+        variant === 'balance' && "gradient-balance",
+        variant === 'savings' && "bg-yellow-500"
       )} />
 
       <div className="flex items-start justify-between relative z-10">
@@ -43,7 +45,8 @@ export function SummaryCard({ title, value, icon: Icon, variant, delay = 0 }: Su
             "text-3xl font-bold tracking-tight",
             variant === 'income' && "text-gradient-income",
             variant === 'expense' && "text-gradient-expense",
-            variant === 'balance' && "text-foreground"
+            variant === 'balance' && "text-foreground",
+            variant === 'savings' && "text-yellow-500"
           )}>
             {formatCurrency(value)}
           </p>
@@ -52,11 +55,13 @@ export function SummaryCard({ title, value, icon: Icon, variant, delay = 0 }: Su
           "rounded-2xl p-4",
           variant === 'income' && "gradient-income shadow-glow-income",
           variant === 'expense' && "gradient-expense shadow-glow-expense",
-          variant === 'balance' && "gradient-balance"
+          variant === 'balance' && "gradient-balance",
+          variant === 'savings' && "bg-yellow-500/20 shadow-glow-savings"
         )}>
           <Icon className={cn(
             "h-6 w-6",
-            variant === 'balance' ? "text-white" : "text-background"
+            variant === 'balance' ? "text-white" : "text-background",
+            variant === 'savings' && "text-yellow-500"
           )} />
         </div>
       </div>
@@ -66,7 +71,8 @@ export function SummaryCard({ title, value, icon: Icon, variant, delay = 0 }: Su
         "absolute -bottom-20 -right-20 h-40 w-40 rounded-full opacity-20 blur-3xl",
         variant === 'income' && "bg-[hsl(var(--income))]",
         variant === 'expense' && "bg-[hsl(var(--expense))]",
-        variant === 'balance' && "bg-primary"
+        variant === 'balance' && "bg-primary",
+        variant === 'savings' && "bg-yellow-500"
       )} />
 
       {/* Shimmer effect */}

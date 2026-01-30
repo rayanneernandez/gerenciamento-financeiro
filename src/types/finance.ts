@@ -1,5 +1,38 @@
 export type TransactionType = 'income' | 'expense';
 
+export type Bank = 
+  | 'Nubank'
+  | 'Inter'
+  | 'Itaú'
+  | 'Bradesco'
+  | 'Santander'
+  | 'Caixa'
+  | 'Banco do Brasil'
+  | 'Mercado Pago'
+  | 'PicPay'
+  | 'C6 Bank'
+  | 'XP'
+  | 'BTG'
+  | 'Dinheiro'
+  | 'Outros';
+
+export const BANKS: Bank[] = [
+  'Nubank',
+  'Inter',
+  'Itaú',
+  'Bradesco',
+  'Santander',
+  'Caixa',
+  'Banco do Brasil',
+  'Mercado Pago',
+  'PicPay',
+  'C6 Bank',
+  'XP',
+  'BTG',
+  'Dinheiro',
+  'Outros'
+];
+
 export type Category = 
   | 'alimentacao'
   | 'transporte'
@@ -11,6 +44,7 @@ export type Category =
   | 'servicos'
   | 'salario'
   | 'investimentos'
+  | 'investimento_cofrinho'
   | 'outros';
 
 export interface Transaction {
@@ -19,7 +53,9 @@ export interface Transaction {
   amount: number;
   type: TransactionType;
   category: Category;
+  bank?: Bank;
   date: Date;
+  paid?: boolean;
 }
 
 export interface CategoryInfo {
@@ -39,6 +75,7 @@ export const CATEGORIES: Record<Category, CategoryInfo> = {
   servicos: { name: 'Serviços', icon: '⚡', color: 'hsl(38, 92%, 50%)' },
   salario: { name: 'Salário', icon: '💰', color: 'hsl(158, 64%, 40%)' },
   investimentos: { name: 'Investimentos', icon: '📈', color: 'hsl(173, 80%, 40%)' },
+  investimento_cofrinho: { name: 'Investimento Cofrinho', icon: '🐷', color: 'hsl(326, 100%, 74%)' },
   outros: { name: 'Outros', icon: '📦', color: 'hsl(215, 14%, 45%)' },
 };
 
@@ -51,6 +88,7 @@ export const EXPENSE_CATEGORIES: Category[] = [
   'educacao',
   'compras',
   'servicos',
+  'investimento_cofrinho',
   'outros',
 ];
 

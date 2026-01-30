@@ -63,11 +63,16 @@ export function ExpenseChart({ data, totalExpenses }: ExpenseChartProps) {
             <Tooltip
               formatter={(value: number) => formatCurrency(value)}
               contentStyle={{
-                backgroundColor: 'hsl(220, 20%, 12%)',
+                backgroundColor: 'rgba(17, 24, 39, 0.95)', // Background escuro mais sólido
                 border: '1px solid rgba(255,255,255,0.1)',
                 borderRadius: '12px',
-                boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
-                color: 'white',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
+                padding: '12px',
+              }}
+              itemStyle={{
+                color: '#fff', // Garante texto branco
+                fontSize: '14px',
+                fontWeight: 600,
               }}
             />
           </PieChart>
