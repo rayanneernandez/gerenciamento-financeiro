@@ -89,7 +89,7 @@ const Index = () => {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
           <Tabs defaultValue="dashboard" className="w-full">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-              <TabsList className="grid w-full md:w-auto grid-cols-5 bg-card/50">
+              <TabsList className="grid w-full md:w-auto grid-cols-6 bg-card/50">
                 <TabsTrigger value="dashboard" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
                   <LayoutDashboard className="w-4 h-4 mr-2" />
                   <span className="hidden sm:inline">Visão Geral</span>
@@ -106,9 +106,13 @@ const Index = () => {
                   <Building2 className="w-4 h-4 mr-2" />
                   <span className="hidden sm:inline">Contas</span>
                 </TabsTrigger>
-                <TabsTrigger value="wishlist" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+                <TabsTrigger value="savings" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
                   <PiggyBank className="w-4 h-4 mr-2" />
-                  <span className="hidden sm:inline">Objetivos</span>
+                  <span className="hidden sm:inline">Cofrinho</span>
+                </TabsTrigger>
+                <TabsTrigger value="wishlist" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+                  <ShoppingBag className="w-4 h-4 mr-2" />
+                  <span className="hidden sm:inline">Desejos</span>
                 </TabsTrigger>
               </TabsList>
 
@@ -219,15 +223,15 @@ const Index = () => {
               <BankDashboard transactions={transactions} />
             </TabsContent>
 
-            <TabsContent value="wishlist">
+            <TabsContent value="savings" className="space-y-6">
               <div className="w-full">
-                <Wishlist />
+                <SavingsGoal />
               </div>
             </TabsContent>
 
-            <TabsContent value="savings">
+            <TabsContent value="wishlist" className="space-y-6">
               <div className="w-full">
-                <SavingsGoal />
+                <Wishlist />
               </div>
             </TabsContent>
           </Tabs>
