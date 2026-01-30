@@ -75,14 +75,14 @@ export function TransactionList({ transactions, onDelete, onUpdate }: Transactio
         <Dialog key={transaction.id} open={editingId === transaction.id} onOpenChange={(open) => !open && setEditingId(null)}>
           <div
             className={cn(
-              "flex items-center justify-between p-4 rounded-2xl",
+              "flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 rounded-2xl gap-4 sm:gap-0",
               "glass-card hover:bg-white/5 transition-all duration-300 animate-fade-in group cursor-pointer relative"
             )}
             style={{ animationDelay: `${index * 50}ms` }}
           >
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 w-full sm:w-auto">
               <div 
-                className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl relative overflow-hidden"
+                className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center text-xl sm:text-2xl relative overflow-hidden flex-shrink-0"
                 style={{ 
                   background: `linear-gradient(135deg, ${CATEGORIES[transaction.category].color}30, ${CATEGORIES[transaction.category].color}10)`,
                   boxShadow: `0 0 20px ${CATEGORIES[transaction.category].color}20`
@@ -90,19 +90,19 @@ export function TransactionList({ transactions, onDelete, onUpdate }: Transactio
               >
                 {CATEGORIES[transaction.category].icon}
               </div>
-              <div>
-                <p className="font-semibold text-foreground text-lg">{transaction.description}</p>
+              <div className="min-w-0 flex-1">
+                <p className="font-semibold text-foreground text-base sm:text-lg truncate">{transaction.description}</p>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
-                  <span className="px-2 py-0.5 rounded-full bg-white/5 text-xs">
+                  <span className="px-2 py-0.5 rounded-full bg-white/5 text-xs whitespace-nowrap">
                     {CATEGORIES[transaction.category].name}
                   </span>
                   <span>•</span>
-                  <span>{format(transaction.date, "d 'de' MMM", { locale: ptBR })}</span>
+                  <span className="whitespace-nowrap">{format(transaction.date, "d 'de' MMM", { locale: ptBR })}</span>
                 </div>
               </div>
             </div>
             
-            <div className="flex items-center gap-4">
+            <div className="flex items-center justify-between sm:justify-end gap-4 w-full sm:w-auto pl-16 sm:pl-0">
               <button
                 onClick={(e) => {
                   e.stopPropagation();
@@ -121,7 +121,7 @@ export function TransactionList({ transactions, onDelete, onUpdate }: Transactio
               </button>
 
               <span className={cn(
-                "font-bold text-xl",
+                "font-bold text-lg sm:text-xl whitespace-nowrap",
                 transaction.type === 'income' ? 'text-gradient-income' : 'text-gradient-expense',
                 !(transaction.paid ?? (transaction.date <= new Date())) && "opacity-50"
               )}>

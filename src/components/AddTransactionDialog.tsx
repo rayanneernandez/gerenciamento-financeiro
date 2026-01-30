@@ -127,9 +127,9 @@ export function AddTransactionDialog({ onAdd }: AddTransactionDialogProps) {
       if (!isOpen) resetForm();
     }}>
       <DialogTrigger asChild>
-        <Button className="gap-2 gradient-primary text-background font-semibold shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:scale-105 transition-all duration-300 rounded-xl px-6">
+        <Button className="gap-2 gradient-primary text-background font-semibold shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:scale-105 transition-all duration-300 rounded-xl px-3 sm:px-6">
           <Plus className="h-5 w-5" />
-          Nova Transação
+          <span className="hidden sm:inline">Nova Transação</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md glass-card border-white/10 shadow-elevated max-h-[90vh] overflow-y-auto">
